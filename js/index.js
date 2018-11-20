@@ -2,9 +2,12 @@
 	var c = document.getElementById("myCanvas");
 	document.getElementById("change_color").onclick = changeColor;
 	document.getElementById("change_type").onclick = changeType;
+    document.getElementById("speed_up").onclick = speedUp;
+    document.getElementById("slow_down").onclick = slowDown;
 	var ctx = c.getContext("2d");
 	var color = "blue";
 	var type = "circle";
+    var speed = 0;
  
   ctx.beginPath();
   ctx.moveTo(100,0);
@@ -40,6 +43,14 @@ function changeType(){
 	else
 		type="circle";
 }
+function speedUp(){
+	if(speed<=30);    
+		speed+=2;
+}
+function slowDown(){
+	if(speed>=0)    
+		speed-=2;
+}
 var angle =0;
 var radius =1;
 var direction=0;
@@ -52,7 +63,7 @@ setInterval(function(){
  if(angle==360)
  	angle=0;
  else
- 	angle+=20;
+ 	angle+=20+speed;
  if(radius==80)
  	direction=0;
  if(radius==0)
